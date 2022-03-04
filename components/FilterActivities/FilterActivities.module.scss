@@ -1,0 +1,90 @@
+@use '../../libs/mixins.scss';
+@use '../../libs/variables.scss';
+
+.wrapper{
+    margin: 50px 0 -50px;
+    padding: 30px;
+    background-color: variables.$quaternary;
+    
+    @include mixins.flexContainer(row, space-around);
+
+    .wrapper_price
+    {
+        @include mixins.flexContainer();
+        padding: 15px 0;
+        font-size: 1.3rem;
+        font-weight: 600;
+        input[type=range]
+        {
+            -webkit-appearance: none;
+            width: 200px; 
+            height: 8px;
+            max-width: 100%;
+            border-radius: 4px;
+            background-color: variables.$black;
+            outline: none;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+
+            &::-webkit-slider-thumb
+            {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                background-color: variables.$primary;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .wrapper_category
+    {
+        @include mixins.flexContainer(row, space-around);
+        flex-wrap: wrap;
+        width: 50%;
+
+        button
+        {
+            width: 180px;
+            height: 33px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 0;
+            background-color: variables.$black;
+            color: #fff;
+            font-weight: 400;
+            cursor: pointer;
+        }
+    }    
+}
+
+@media only screen and (max-width: 1450px){
+    .wrapper{
+        @include mixins.flexContainer(column-reverse, center, center);
+        margin: 50px 50px -50px;
+        .wrapper_category{
+            width: 100%;
+            @include mixins.flexContainer(row, center, center);
+        }
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .wrapper{   
+        margin: 50px 20px -50px;
+        .wrapper_category{
+            width: 100%;
+            @include mixins.flexContainer(row, center, center);
+        }
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .wrapper{   
+        .wrapper_price{
+            @include mixins.flexContainer(column,center,center,15px);
+        }
+    }
+}

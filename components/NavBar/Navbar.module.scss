@@ -1,0 +1,98 @@
+@use "../../libs/mixins.scss";
+@use "../../libs/variables.scss";
+
+
+.container{
+    @include mixins.flexContainer(row, space-between, center);
+    position: fixed;
+    width: 100%;
+    padding: 20px 50px;
+    z-index: 10;
+    transition: all 1s ease;
+    
+    
+    .menu{
+        display: none;
+        color: #fff;
+    }
+    
+    .flexed{
+      width: 30%;
+    }
+    
+    .logoDiv{
+        @include mixins.flexContainer(row, flex-start, flex-start);
+        height: 80px;
+        
+        .logo{
+            width: 300px;
+            position: relative;
+            height: 100%;
+            cursor: pointer;
+            
+            img{               
+                object-fit: contain;
+                display: block;               
+            }
+        }
+    
+    }
+    .navbar{
+        color: variables.$white;
+        z-index: 1;
+      
+        ul{
+            @include mixins.flexContainer(row, space-between, center);
+            list-style: none;
+            padding: 0 20%;
+            font-weight: 600;
+                    }
+
+    }
+    .searchbar{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        .cart
+        {
+            color: variables.$white;
+            padding: 18px 40px;
+            cursor: pointer;
+        }
+    }
+    
+}
+@media only screen and (max-width: 768px){
+    .container{
+        padding: 20px;
+        .searchbar{
+            display: none;
+        }
+        .menu{
+            display: block;
+            svg{
+                transform: scale(2);
+                transition: all 1s ease;
+                cursor: pointer;
+            }
+        }
+        .logoDiv{
+            width: 100%;
+            .logo{
+                width: 80%;
+            }
+        }
+        .navbar{
+            display: none;
+        }
+
+        .searchbar
+        {
+            .cart
+            {
+                display: none;
+            }
+        }
+    }
+
+}

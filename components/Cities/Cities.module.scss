@@ -1,0 +1,35 @@
+
+@use '../../libs/variables.scss';
+@use '../../libs/mixins.scss';
+
+.wrapper_cities
+{
+    padding: variables.$sectionsPadding;
+    @include mixins.flexContainer(column);
+
+    .wrapper_cities_cards
+    {
+        width: 100%;
+        padding: 50px 0;
+        @include mixins.flexContainer(row, space-between,center, 0px);
+        // display: flex;
+        // justify-content: space-between;
+        flex-wrap: wrap;
+
+        a
+        {
+            margin: 20px 10px;
+        }
+
+    }
+}
+
+
+@media only screen and (max-width: 1480px){
+    .wrapper_cities{
+        padding: 50px;
+        .wrapper_cities_cards{
+            justify-content: center;
+        }
+    } 
+}

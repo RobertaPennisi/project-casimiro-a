@@ -1,0 +1,159 @@
+@use "./../../libs/variables.scss";
+@use "./../../libs/mixins.scss";
+
+.result{
+    height: 0px;
+    width: 400px;
+    position: absolute;
+    background: variables.$black;
+    top: 110px;
+    display: block;
+    transition: all 1s;
+    overflow-x: hidden;
+    right: 50px;
+    border-bottom: 4px solid variables.$black;
+    box-shadow: variables.$shadow;
+    border: none;
+    z-index: 9;
+
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        transition: all 0.35s ease;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #000000;
+        border-radius: 10px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #8f8f8f;
+    }
+
+    cursor: pointer;
+    .info{
+        padding: 5px;
+        margin: 5px;
+        display: flex;
+        padding-bottom: 10px;
+       
+    
+        
+        .img{
+
+            
+            height: 150px;
+            min-width: 150px;
+            border-radius: 15px;
+            box-shadow: variables.$shadow;
+            overflow: hidden;
+            img{
+                object-fit: cover;
+            }
+        }
+        .text{
+            padding: 10px;
+            color: variables.$primary;
+            transition: all 0.2s ease;
+            .cityName{
+                
+                &:hover{
+                    color: variables.$alternative;
+                }
+            }
+            p{
+                margin-top: 5px;
+                color: variables.$quaternary;
+                height: 100%;
+                
+            }
+        }
+        
+    }
+    &.open{
+        height: variables.$modaliheight;
+    }
+}
+
+.container{
+    
+    button{
+        border: none;
+        background: #f1f1f1;
+        min-width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        color: variables.$white;
+        @include mixins.flexContainer(row, center, center, 0px);
+        box-shadow: variables.$shadow;
+    }
+    
+    .searchIcons{  
+        transition: all 0.5s;
+    }
+    .inputText{
+        opacity: 0;
+        width: 0px;
+        transition: all 1s;
+        border: none;
+        position: relative;
+        font-size: 1.05rem;
+        outline: none;
+        background: transparent;
+        
+        &::placeholder{
+            color: #000;
+        }
+
+        &.open{
+        width: 100px;
+        opacity: 1;
+        animation: appear 1s;
+        margin: 0 10px;
+        right: 12.5px;
+        }
+    }
+}
+.closeBtn{
+    display: none;
+
+}
+
+@media only screen and (max-width: 768px){
+    .result {
+        right: 0;
+        width: 100%;
+        top: 220px;
+        height: 0vh;
+        text-align: left;
+        padding:  0 15px;
+        &.open{
+            min-height: 70vh;
+        }
+        .info{
+            border-bottom: 1px solid variables.$white;
+            .img{
+                display: none;
+            }
+        }
+    }
+
+    .closeBtn{
+        display: block;
+        position: sticky;
+        top: 10px;
+        margin: 0 0 0 70vw;
+        @include mixins.buttonCart();
+    }
+}

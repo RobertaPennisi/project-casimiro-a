@@ -1,0 +1,78 @@
+
+@use "./libs/variables.scss";
+
+.container{
+    padding: 20px;
+    max-width: 100%;
+    .carousel{
+    max-width: 100%;
+    height: 250px;
+    }
+    .text{
+        color: variables.$white;
+        h1{
+            font-size: 6em;
+            text-transform: uppercase;
+        }
+        p{
+            margin-top: 15px;
+            max-width: 70%;
+            font-size: 18px;
+        }
+
+    }
+}
+
+@media screen and (max-width: 1250px){
+    .container{
+        
+        .text{
+            
+            h1{
+                font-size: 5em;
+            }
+            p{
+                max-width: 100%;
+            }
+    
+        }
+    }
+}
+
+@media screen and (max-width: 1050px){
+    .container{
+        .carousel{
+            max-width: 100%;
+            height: 200px;
+            }
+        .text{
+            text-align: center;
+            
+            h1{
+                font-size: 4em;
+            }
+            p{
+                font-size: 16px;
+                max-width: 100%;
+            }
+    
+        }
+    }
+}
+
+@media screen and (max-width: 550px){
+    .container{
+        padding: 5px;
+        .carousel{
+            height: 280px;
+        }
+        .text{          
+            h1{
+                font-size: 2em;
+            }
+            p{
+                font-size: 15px;
+            }   
+        }
+    }
+}
